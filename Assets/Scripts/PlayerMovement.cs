@@ -16,6 +16,26 @@ public class PlayerMovement : MonoBehaviour
     private void SpawnBomb() {
         // Instantiate(projectilePrefab, transform.position + UnityEngine.Vector3.up, UnityEngine.Quaternion.identity);
         Instantiate(bombPrefab, transform.position, UnityEngine.Quaternion.identity);
+        
+        // float counter = 0;
+
+        // float waitTime = 4;
+        // while (counter < waitTime)
+        // {
+        //     //Increment Timer until counter >= waitTime
+        //     counter += Time.deltaTime;
+        //     // Debug.Log("We have waited for: " + counter + " seconds");
+        //     // //Wait for a frame so that Unity doesn't freeze
+        //     // //Check if we want to quit this function
+        //     // if (quit)
+        //     // {
+        //     //     //Quit function
+        //     //     yield break;
+        //     // }
+        //     // yield return null;
+        // }
+        // Destroy(bombPrefab);
+
     }
 
     void Start()
