@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
 
     public float speed;
@@ -61,20 +61,20 @@ public class PlayerMovement : MonoBehaviour
         inputX = 0;
         playerSpriteRenderer.flipX = false;
         
-        if (Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.W)) {
             playerSpriteRenderer.sprite = spriteUp;
             inputY = 1;
         }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.A)) {
             playerSpriteRenderer.sprite = spriteRight;
             playerSpriteRenderer.flipX = true;
             inputX = -1;
         }
-        if (Input.GetKey(KeyCode.DownArrow)) {
+        if (Input.GetKey(KeyCode.S)) {
             playerSpriteRenderer.sprite = spriteDown;
             inputY = -1;
         }
-        if (Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKey(KeyCode.D)) {
             playerSpriteRenderer.sprite = spriteRight;
             inputX = 1;
         }
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         // }
         rb2d.linearVelocity = new Vector2(inputX, inputY) * speed;
 
-        if (Input.GetKeyDown(KeyCode.RightShift) && (lastTimeFired + 1 / rateOfBomb) < Time.time) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && (lastTimeFired + 1 / rateOfBomb) < Time.time) {
             lastTimeFired = Time.time;
             SpawnBomb();
         }
