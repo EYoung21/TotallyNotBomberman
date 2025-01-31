@@ -105,7 +105,7 @@ MonoBehaviour:
   laserLineRenderer: {fileID: -3386519376593521883}
   playerBoxLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
 --- !u!120 &-3386519376593521883
 LineRenderer:
   serializedVersion: 2
