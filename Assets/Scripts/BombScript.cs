@@ -19,55 +19,55 @@ public class BombScript : MonoBehaviour
     void Update()
     {
         lifeTime -= Time.deltaTime;
-		if (lifeTime <= 0) {
+        if (lifeTime <= 0) {
             laserLineRenderer.enabled = true;
-
+            
+            // Configure LineRenderer for 8 points (4 lines, 2 points each)
+            laserLineRenderer.positionCount = 8;
+            
+            // Up ray
             Vector3 up = transform.position;
             up.y += 2;
-            Vector3 upDir = up - transform.position;  //where you want to face - where you are
+            Vector3 upDir = up - transform.position;
             Vector2 upDir2D = new Vector2(upDir.x, upDir.y);
             RaycastHit2D upHit = Physics2D.Raycast(transform.position, upDir2D, 2, playerBoxLayerMask);
+            laserLineRenderer.SetPosition(0, transform.position);
+            laserLineRenderer.SetPosition(1, upHit.collider != null ? upHit.point : up);
             processRay(upHit);
 
+            // Right ray
             Vector3 right = transform.position;
             right.x += 2;
             Vector3 rightDir = right - transform.position;
             Vector2 rightDir2D = new Vector2(rightDir.x, rightDir.y);
             RaycastHit2D rightHit = Physics2D.Raycast(transform.position, rightDir2D, 2, playerBoxLayerMask);
+            laserLineRenderer.SetPosition(2, transform.position);
+            laserLineRenderer.SetPosition(3, rightHit.collider != null ? rightHit.point : right);
             processRay(rightHit);
 
-
+            // Down ray
             Vector3 down = transform.position;
             down.y -= 2;
             Vector3 downDir = down - transform.position;
             Vector2 downDir2D = new Vector2(downDir.x, downDir.y);
             RaycastHit2D downHit = Physics2D.Raycast(transform.position, downDir2D, 2, playerBoxLayerMask);
+            laserLineRenderer.SetPosition(4, transform.position);
+            laserLineRenderer.SetPosition(5, downHit.collider != null ? downHit.point : down);
             processRay(downHit);
 
-
+            // Left ray
             Vector3 left = transform.position;
             left.x -= 2;
             Vector3 leftDir = left - transform.position;
             Vector2 leftDir2D = new Vector2(leftDir.x, leftDir.y);
             RaycastHit2D leftHit = Physics2D.Raycast(transform.position, leftDir2D, 2, playerBoxLayerMask);
+            laserLineRenderer.SetPosition(6, transform.position);
+            laserLineRenderer.SetPosition(7, leftHit.collider != null ? leftHit.point : left);
             processRay(leftHit);
-            
 
-			Destroy(gameObject);
-		}
-
-
-
-
-
-
-        // Vector3 dir3D = crosshair.transform.position - laserStart.transform.position;
-		
-		// Vector2 dir2D = new Vector2(dir3D.x, dir3D.y);
-
-
-
-        // RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2D, length, balloonLayerMask);
+            // Add small delay before destroying to see the laser
+            Destroy(gameObject, 0.1f);
+        }
     }
 
     private void processRay(RaycastHit2D hit) {
