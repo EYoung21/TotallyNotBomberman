@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] framesUp;
     public Sprite[] framesDown;
 
-    float frameTimer;
+    float frameTimerLeft, frameTimerRight, frameTimerUp, frameTimerDown;
     float framesPerSecond = 10;
 
-    int currentFrameIndex = 0;
+    int frameIndexLeft, frameIndexRight, frameIndexUp, frameIndexDown;
 
     private string lastDirection = "down";
     
@@ -63,94 +63,108 @@ public class PlayerMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
-        frameTimer = (1f / framesPerSecond);
-        currentFrameIndex = 0;
+        // Initialize all frame timers and indices
+        frameTimerUp = frameTimerDown = frameTimerLeft = frameTimerRight = (1f / framesPerSecond);
+        frameIndexUp = frameIndexDown = frameIndexLeft = frameIndexRight = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        bool isMoving = false;
 
         // Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         inputY = 0;
         inputX = 0;
         playerSpriteRenderer.flipX = false;
 
-        if (lastDirection == "down") {
-            playerSpriteRenderer.sprite = spriteDown;
-        }
-        else if (lastDirection == "up") {
-            playerSpriteRenderer.sprite = spriteUp;
-        }
-        else if (lastDirection == "right") {
-            playerSpriteRenderer.sprite = spriteRight;
-        }
-        else if (lastDirection == "left") {
-            playerSpriteRenderer.sprite = spriteRight;
-            playerSpriteRenderer.flipX = true;
-        }
-        
         if (Input.GetKey(KeyCode.UpArrow)) {
-            // playerSpriteRenderer.sprite = spriteUp;
-
-            if (frameTimer <= 0) {
-                currentFrameIndex++;
-                // if (currentFrameIndex >= frames.Length) {
-                //     Destroy(gameObject);
-                //     return;
-                // }
-                frameTimer = (1f / framesPerSecond);
-                playerSpriteRenderer.sprite = framesUp[currentFrameIndex];
+            isMoving = true;
+            frameTimerUp -= Time.deltaTime;
+            if (frameTimerUp <= 0) {
+                frameIndexUp++;
+                if (frameIndexUp >= framesUp.Length) {
+                    frameIndexUp = 0;
+                }
+                frameTimerUp = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesUp[frameIndexUp];
+                Debug.Log("Current frame index: " + frameIndexUp);
+                Debug.Log("Direction: " + "up");
+                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
 
             inputY = 1;
             lastDirection = "up";
         }
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            if (frameTimer <= 0) {
-                currentFrameIndex++;
-                // if (currentFrameIndex >= frames.Length) {
-                //     Destroy(gameObject);
-                //     return;
-                // }
-                frameTimer = (1f / framesPerSecond);
-                playerSpriteRenderer.sprite = framesRight[currentFrameIndex];
+            isMoving = true;
+            frameTimerLeft -= Time.deltaTime;
+            if (frameTimerLeft <= 0) {
+                frameIndexLeft++;
+                if (frameIndexLeft >= framesRight.Length) {
+                    frameIndexLeft = 0;
+                }
+                frameTimerLeft = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesRight[frameIndexLeft];
+                Debug.Log("Current frame index: " + frameIndexLeft);
+                Debug.Log("Direction: " + "left");
+                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
-            // playerSpriteRenderer.sprite = spriteRight;
             playerSpriteRenderer.flipX = true;
             inputX = -1;
             lastDirection = "left";
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
-            // playerSpriteRenderer.sprite = spriteDown;
-            inputY = -1;
-            if (frameTimer <= 0) {
-                currentFrameIndex++;
-                // if (currentFrameIndex >= frames.Length) {
-                //     Destroy(gameObject);
-                //     return;
-                // }
-                frameTimer = (1f / framesPerSecond);
-                playerSpriteRenderer.sprite = framesDown[currentFrameIndex];
+            isMoving = true;
+            frameTimerDown -= Time.deltaTime;
+            if (frameTimerDown <= 0) {
+                frameIndexDown++;
+                if (frameIndexDown >= framesDown.Length) {
+                    frameIndexDown = 0;
+                }
+                frameTimerDown = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesDown[frameIndexDown];
+                Debug.Log("Current frame index: " + frameIndexDown);
+                Debug.Log("Direction: " + "down");
+                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
             lastDirection = "down";
+            inputY = -1;
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
-            if (frameTimer <= 0) {
-                currentFrameIndex++;
-                // if (currentFrameIndex >= frames.Length) {
-                //     Destroy(gameObject);
-                //     return;
-                // }
-                frameTimer = (1f / framesPerSecond);
-                playerSpriteRenderer.sprite = framesRight[currentFrameIndex];
+            isMoving = true;
+            frameTimerRight -= Time.deltaTime;
+            if (frameTimerRight <= 0) {
+                frameIndexRight++;
+                if (frameIndexRight >= framesRight.Length) {
+                    frameIndexRight = 0;
+                }
+                frameTimerRight = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesRight[frameIndexRight];
+                Debug.Log("Direction: " + "right");
+                Debug.Log("Current frame index: " + frameIndexRight);
             }
-            // playerSpriteRenderer.sprite = spriteRight;
             inputX = 1;
             lastDirection = "right";
         }
 
+        // Only use static sprites if we're not moving
+        if (!isMoving) {
+            if (lastDirection == "down") {
+                playerSpriteRenderer.sprite = spriteDown;
+            }
+            else if (lastDirection == "up") {
+                playerSpriteRenderer.sprite = spriteUp;
+            }
+            else if (lastDirection == "right") {
+                playerSpriteRenderer.sprite = spriteRight;
+            }
+            else if (lastDirection == "left") {
+                playerSpriteRenderer.sprite = spriteRight;
+                playerSpriteRenderer.flipX = true;
+            }
+        }
 
         // if (input.magnitude > 1.0f) {
         //     input.Normalize();
