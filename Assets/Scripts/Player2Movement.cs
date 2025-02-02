@@ -87,9 +87,9 @@ public class Player2Movement : MonoBehaviour
                 }
                 frameTimerUp = (1f / framesPerSecond);
                 playerSpriteRenderer.sprite = framesUp[frameIndexUp];
-                Debug.Log("Current frame index: " + frameIndexUp);
-                Debug.Log("Direction: " + "up");
-                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
+                // Debug.Log("Current frame index: " + frameIndexUp);
+                // Debug.Log("Direction: " + "up");
+                // Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
             inputY = 1;
             lastDirection = "up";
@@ -104,9 +104,9 @@ public class Player2Movement : MonoBehaviour
                 }
                 frameTimerLeft = (1f / framesPerSecond);
                 playerSpriteRenderer.sprite = framesRight[frameIndexLeft];
-                Debug.Log("Current frame index: " + frameIndexLeft);
-                Debug.Log("Direction: " + "left");
-                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
+                // Debug.Log("Current frame index: " + frameIndexLeft);
+                // Debug.Log("Direction: " + "left");
+                // Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
             playerSpriteRenderer.flipX = true;
             inputX = -1;
@@ -122,9 +122,9 @@ public class Player2Movement : MonoBehaviour
                 }
                 frameTimerDown = (1f / framesPerSecond);
                 playerSpriteRenderer.sprite = framesDown[frameIndexDown];
-                Debug.Log("Current frame index: " + frameIndexDown);
-                Debug.Log("Direction: " + "down");
-                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
+                // Debug.Log("Current frame index: " + frameIndexDown);
+                // Debug.Log("Direction: " + "down");
+                // Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
             inputY = -1;
             lastDirection = "down";
@@ -139,9 +139,9 @@ public class Player2Movement : MonoBehaviour
                 }
                 frameTimerRight = (1f / framesPerSecond);
                 playerSpriteRenderer.sprite = framesRight[frameIndexRight];
-                Debug.Log("Current frame index: " + frameIndexRight);
-                Debug.Log("Direction: " + "right");
-                Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
+                // Debug.Log("Current frame index: " + frameIndexRight);
+                // Debug.Log("Direction: " + "right");
+                // Debug.Log("Sprite: " + playerSpriteRenderer.sprite);
             }
             inputX = 1;
             lastDirection = "right";
