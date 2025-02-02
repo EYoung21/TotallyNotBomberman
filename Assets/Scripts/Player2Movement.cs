@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Player2Movement : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Player2Movement : MonoBehaviour
 
     public GameObject bombPrefab;
 
-    public float rateOfBomb = 2;
+    public float rateOfBomb = 0.5f;
 
     private float lastTimeFired = 0;
 
@@ -32,10 +33,19 @@ public class Player2Movement : MonoBehaviour
     int frameIndexLeft, frameIndexRight, frameIndexUp, frameIndexDown;
     
     private string lastDirection = "down";
+
+    public LayerMask bombLayerMask;
     
     private void SpawnBomb() {
         // Instantiate(projectilePrefab, transform.position + UnityEngine.Vector3.up, UnityEngine.Quaternion.identity);
-        Instantiate(bombPrefab, transform.position, UnityEngine.Quaternion.identity);
+        // Instantiate(bombPrefab, transform.position, UnityEngine.Quaternion.identity);
+
+        RaycastHit2D hereHit = Physics2D.Raycast(transform.position, transform.position, 1, bombLayerMask);
+        if (hereHit.collider != null) {
+            return; //bomb already exists here
+        }
+
+        Instantiate(bombPrefab, new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), 0), UnityEngine.Quaternion.identity);
         
         // float counter = 0;
 

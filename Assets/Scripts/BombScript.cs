@@ -53,10 +53,9 @@ public class BombScript : MonoBehaviour
 
         if (frameTimer <= 0) {
             currentFrameIndex++;
-            // if (currentFrameIndex >= frames.Length) {
-            //     Destroy(gameObject);
-            //     return;
-            // }
+            if (currentFrameIndex >= frames.Length) {
+                currentFrameIndex = 5;
+            }
             frameTimer = (1f / framesPerSecond);
             spriteRenderer.sprite = frames[currentFrameIndex];
         }

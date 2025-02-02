@@ -1048,6 +1048,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2625f44049075401dbefa3b8850cbd84, type: 2}
   - {fileID: 21300000, guid: 184c8aee5d7644a61be523644f769d2a, type: 2}
   - {fileID: 21300000, guid: 33023a4369c3247cf83e9dce38b2dad9, type: 2}
+  bombLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &139424732
 Rigidbody2D:
   serializedVersion: 5
@@ -2292,6 +2295,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 81c3904f1565d413497212efa52fdd6a, type: 2}
   - {fileID: 21300000, guid: 28eb6d635a03e46e7b84a273d957ca9c, type: 2}
   - {fileID: 21300000, guid: 577e1eec15c71407a92c83faed4c1749, type: 2}
+  bombLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &564430297
 PrefabInstance:
   m_ObjectHideFlags: 0
