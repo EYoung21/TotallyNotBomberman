@@ -10,7 +10,7 @@ public class Player2Movement : MonoBehaviour
 
     public GameObject bombPrefab;
 
-    public float rateOfBomb = 0.5f;
+    public float rateOfBomb = 0.1f;
 
     private float lastTimeFired = 0;
 
