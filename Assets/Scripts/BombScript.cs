@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;  //add for IEnumerator
 
 public class BombScript : MonoBehaviour
 {   
@@ -23,12 +24,7 @@ public class BombScript : MonoBehaviour
     
     public Sprite[] frames;
 
-    // frames.Add(bombSprite1);
-    // frames.Add(bombSprite2);
-    // frames.Add(bombSprite3);
-    // frames.Add(bombSprite4);
-    // frames.Add(bombSprite5);
-    // frames.Add(bombSprite6);
+    private float timeCreated;
 
     SpriteRenderer spriteRenderer;
 
@@ -42,13 +38,24 @@ public class BombScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         frameTimer = (1f / framesPerSecond);
         currentFrameIndex = 0;
+        
+        timeCreated = Time.time;
+
+        //disable collider immediately on spawn
+        GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(EnableColliderAfterDelay());
+    }
+
+    IEnumerator EnableColliderAfterDelay() { //coroutines run asynchronously
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<Collider2D>().enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+        
         frameTimer -= Time.deltaTime;
 
         if (frameTimer <= 0) {
@@ -132,4 +139,5 @@ public class BombScript : MonoBehaviour
     private void ReloadScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }
