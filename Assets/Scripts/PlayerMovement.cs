@@ -21,6 +21,17 @@ public class PlayerMovement : MonoBehaviour
     public Sprite spriteUp;
     public Sprite spriteDown;
     public Sprite spriteRight;
+
+    public Sprite[] framesRight;
+    public Sprite[] framesUp;
+    public Sprite[] framesDown;
+
+    float frameTimer;
+    float framesPerSecond = 10;
+
+    int currentFrameIndex = 0;
+
+    private string lastDirection = "down";
     
     private void SpawnBomb() {
         // Instantiate(projectilePrefab, transform.position + UnityEngine.Vector3.up, UnityEngine.Quaternion.identity);
@@ -51,32 +62,93 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        frameTimer = (1f / framesPerSecond);
+        currentFrameIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         // Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         inputY = 0;
         inputX = 0;
         playerSpriteRenderer.flipX = false;
-        
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            playerSpriteRenderer.sprite = spriteUp;
-            inputY = 1;
+
+        if (lastDirection == "down") {
+            playerSpriteRenderer.sprite = spriteDown;
         }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        else if (lastDirection == "up") {
+            playerSpriteRenderer.sprite = spriteUp;
+        }
+        else if (lastDirection == "right") {
+            playerSpriteRenderer.sprite = spriteRight;
+        }
+        else if (lastDirection == "left") {
             playerSpriteRenderer.sprite = spriteRight;
             playerSpriteRenderer.flipX = true;
+        }
+        
+        if (Input.GetKey(KeyCode.UpArrow)) {
+            // playerSpriteRenderer.sprite = spriteUp;
+
+            if (frameTimer <= 0) {
+                currentFrameIndex++;
+                // if (currentFrameIndex >= frames.Length) {
+                //     Destroy(gameObject);
+                //     return;
+                // }
+                frameTimer = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesUp[currentFrameIndex];
+            }
+
+            inputY = 1;
+            lastDirection = "up";
+        }
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            if (frameTimer <= 0) {
+                currentFrameIndex++;
+                // if (currentFrameIndex >= frames.Length) {
+                //     Destroy(gameObject);
+                //     return;
+                // }
+                frameTimer = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesRight[currentFrameIndex];
+            }
+            // playerSpriteRenderer.sprite = spriteRight;
+            playerSpriteRenderer.flipX = true;
             inputX = -1;
+            lastDirection = "left";
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
-            playerSpriteRenderer.sprite = spriteDown;
+            // playerSpriteRenderer.sprite = spriteDown;
             inputY = -1;
+            if (frameTimer <= 0) {
+                currentFrameIndex++;
+                // if (currentFrameIndex >= frames.Length) {
+                //     Destroy(gameObject);
+                //     return;
+                // }
+                frameTimer = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesDown[currentFrameIndex];
+            }
+            lastDirection = "down";
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
-            playerSpriteRenderer.sprite = spriteRight;
+            if (frameTimer <= 0) {
+                currentFrameIndex++;
+                // if (currentFrameIndex >= frames.Length) {
+                //     Destroy(gameObject);
+                //     return;
+                // }
+                frameTimer = (1f / framesPerSecond);
+                playerSpriteRenderer.sprite = framesRight[currentFrameIndex];
+            }
+            // playerSpriteRenderer.sprite = spriteRight;
             inputX = 1;
+            lastDirection = "right";
         }
 
 

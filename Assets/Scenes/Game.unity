@@ -1036,6 +1036,18 @@ MonoBehaviour:
   spriteUp: {fileID: 21300000, guid: 3a5a23657f25f41d9b9b9a0e62a44b19, type: 2}
   spriteDown: {fileID: 21300000, guid: 2625f44049075401dbefa3b8850cbd84, type: 2}
   spriteRight: {fileID: 21300000, guid: 3cdac73eb772145bd881f417b6823930, type: 2}
+  framesRight:
+  - {fileID: 21300000, guid: d3249e0dfc6ca4573a125e5e07bb931f, type: 2}
+  - {fileID: 21300000, guid: 48e34c70b614d47fdbb3f7ced37f4a20, type: 2}
+  - {fileID: 21300000, guid: d982b46791ebc48fa952c0236aba77e7, type: 2}
+  framesUp:
+  - {fileID: 21300000, guid: 3a5a23657f25f41d9b9b9a0e62a44b19, type: 2}
+  - {fileID: 21300000, guid: e77b9567469a24d7785ca17271affe6a, type: 2}
+  - {fileID: 21300000, guid: 1dd71f874d09c4e4087be3d49ece5ab5, type: 2}
+  framesDown:
+  - {fileID: 21300000, guid: 2625f44049075401dbefa3b8850cbd84, type: 2}
+  - {fileID: 21300000, guid: 184c8aee5d7644a61be523644f769d2a, type: 2}
+  - {fileID: 21300000, guid: 33023a4369c3247cf83e9dce38b2dad9, type: 2}
 --- !u!50 &139424732
 Rigidbody2D:
   serializedVersion: 5
@@ -2265,9 +2277,21 @@ MonoBehaviour:
   speed: 4
   bombPrefab: {fileID: 427081899313268648, guid: 31cb9bc9973e8ad43b50395a9079ccdb, type: 3}
   rateOfBomb: 2
-  spriteUp: {fileID: 21300018, guid: d12c57928542b92438bb08ca14ede744, type: 3}
-  spriteDown: {fileID: 21300020, guid: d12c57928542b92438bb08ca14ede744, type: 3}
-  spriteRight: {fileID: 21300026, guid: d12c57928542b92438bb08ca14ede744, type: 3}
+  spriteUp: {fileID: 21300000, guid: be51bd0761e0b4ada842efb3e4f8527f, type: 2}
+  spriteDown: {fileID: 21300000, guid: 81c3904f1565d413497212efa52fdd6a, type: 2}
+  spriteRight: {fileID: 21300000, guid: ab572b53b63484a4db336895a44cb5fc, type: 2}
+  framesRight:
+  - {fileID: 21300000, guid: ce1836e3a1587473990499647268f2c4, type: 2}
+  - {fileID: 21300000, guid: 06448b95c365f4376bc2df9c1a3b5ab1, type: 2}
+  - {fileID: 21300000, guid: f1d6e90579280425791fb8323bcf60c0, type: 2}
+  framesUp:
+  - {fileID: 21300000, guid: be51bd0761e0b4ada842efb3e4f8527f, type: 2}
+  - {fileID: 21300000, guid: f0cbf28a95e314fa987b835e837f58ff, type: 2}
+  - {fileID: 21300000, guid: d69a7ee46ec994338bef66b8de351250, type: 2}
+  framesDown:
+  - {fileID: 21300000, guid: 81c3904f1565d413497212efa52fdd6a, type: 2}
+  - {fileID: 21300000, guid: 28eb6d635a03e46e7b84a273d957ca9c, type: 2}
+  - {fileID: 21300000, guid: 577e1eec15c71407a92c83faed4c1749, type: 2}
 --- !u!1001 &564430297
 PrefabInstance:
   m_ObjectHideFlags: 0

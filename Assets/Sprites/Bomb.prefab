@@ -107,12 +107,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   frames:
-  - {fileID: 21300000, guid: db209e81b6a47ab4f931e84bf7949eff, type: 2}
-  - {fileID: 21300000, guid: dcd80e05ed307b54ead004b0928253db, type: 2}
-  - {fileID: 21300000, guid: 21cfce45294ced947bfe474e11c839f3, type: 2}
-  - {fileID: 21300000, guid: 7d3981c3b3fe731489f2802faaeae463, type: 2}
-  - {fileID: 21300000, guid: d5811828ec9aa4147a686c5602f7658a, type: 2}
-  - {fileID: 21300000, guid: 0c69209175de71645a76c6492927a3d8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!120 &-3386519376593521883
 LineRenderer:
   serializedVersion: 2
